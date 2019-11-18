@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# kurz.andi@gmx.ch
+
+FILE=$2
+RECIP="kurz.andi@gmx.ch"
+
+encrypt() {
+    echo -e "\n\n\tENCRYPT File: $FILE\n\n"
+    OUTFILENAME="$FILE.gpg"
+    gpg -o $OUTFILENAME --recipient "$RECIP" --encrypt "$FILE"
+    rm -f $FILE
+}
+
+decrypt() {
+    echo -e "\n\n\tDECRYPT File $FILE\n\n"
+    OUTNAME=${FILE%.*}
+    gpg -o $OUTNAME --decrypt $FILE
+    rm -f $FILE
+}
+
+
+case $1 in
+    "encrypt")
+        encrypt
+        ;;
+    "decrypt")
+        decrypt
+        ;;
+    *)
+        exit 1
+esac
