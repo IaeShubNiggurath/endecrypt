@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# kurz.andi@gmx.ch
-
 FILE=$2
-RECIP="kurz.andi@gmx.ch"
+RECIP= # YOUR WHATEVER
 
 encrypt() {
     echo -e "\n\n\tENCRYPT File: $FILE\n\n"
